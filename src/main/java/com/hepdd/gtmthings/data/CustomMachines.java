@@ -28,7 +28,7 @@ import static com.hepdd.gtmthings.data.GTMTRecipeTypes.DIGITAL_MINER_RECIPE;
 
 public class CustomMachines {
 
-    public static final int[] ALL_TIERS = GTValues.tiersBetween(ULV, GTCEuAPI.isHighTier() ? MAX : UHV);
+    public static final int[] ALL_TIERS = GTValues.tiersBetween(LV, GTCEuAPI.isHighTier() ? MAX : UHV);
 
     static {
         GTMTHINGS_REGISTRATE.creativeModeTab(() -> CreativeModeTabs.MORE_MACHINES);

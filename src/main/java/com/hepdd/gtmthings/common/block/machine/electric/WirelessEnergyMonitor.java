@@ -109,6 +109,7 @@ public class WirelessEnergyMonitor extends MetaMachine
         if (avgEnergy.compareTo(BigDecimal.valueOf(0)) >= 0) {
             textList.add(Component.translatable("gtmthings.machine.wireless_energy_monitor.tooltip.input",
                     FormattingUtil.formatNumbers(avgEnergy.abs()),voltageAmperage,voltageName).withStyle(ChatFormatting.GRAY));
+            textList.add(Component.translatable("gtceu.multiblock.power_substation.time_to_drain", Component.literal("你一辈子都充不满")).withStyle(ChatFormatting.GRAY));
         } else {
             textList.add(Component.translatable("gtmthings.machine.wireless_energy_monitor.tooltip.output",
                     FormattingUtil.formatNumbers(avgEnergy.abs()),voltageAmperage,voltageName).withStyle(ChatFormatting.GRAY));

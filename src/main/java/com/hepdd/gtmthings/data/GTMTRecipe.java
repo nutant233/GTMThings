@@ -322,7 +322,8 @@ public class GTMTRecipe {
                 CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_UEV,
                 CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_UIV,
                 CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_UXV,
-                CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_OPV);
+                CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_OPV,
+                CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_MAX);
 
         List<ItemEntry<ComponentItem>> WIRELESS_ENERGY_RECEIVE_COVER_4A = List.of(
                 CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_LV_4A,
@@ -337,9 +338,10 @@ public class GTMTRecipe {
                 CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_UEV_4A,
                 CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_UIV_4A,
                 CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_UXV_4A,
-                CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_OPV_4A);
+                CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_OPV_4A,
+                CustomItems.WIRELESS_ENERGY_RECEIVE_COVER_MAX_4A);
 
-        for (int tier : GTValues.tiersBetween(GTValues.LV, GTCEuAPI.isHighTier() ? GTValues.OpV : GTValues.UHV)) {
+        for (int tier : GTValues.tiersBetween(GTValues.LV, GTCEuAPI.isHighTier() ? GTValues.MAX : GTValues.UHV)) {
             ASSEMBLER_RECIPES.recipeBuilder(GTMThings.id("wireless_energy_input_hatch_" + GTValues.VN[tier].toLowerCase()))
                     .inputItems(GTMachines.ENERGY_INPUT_HATCH[tier].asStack())
                     .inputItems(WIRELESS_ENERGY_RECEIVE_COVER.get(tier - 1).asStack())
@@ -359,9 +361,7 @@ public class GTMTRecipe {
                     .duration(200)
                     .EUt(GTValues.VA[tier])
                     .save(provider);
-        }
 
-        for (int tier : GTValues.tiersBetween(GTValues.EV, GTCEuAPI.isHighTier() ? GTValues.OpV : GTValues.UHV)) {
             ASSEMBLER_RECIPES.recipeBuilder(GTMThings.id("wireless_energy_input_hatch_" + GTValues.VN[tier].toLowerCase() + "_4a"))
                     .inputItems(GTMachines.ENERGY_INPUT_HATCH_4A[tier].asStack())
                     .inputItems(WIRELESS_ENERGY_RECEIVE_COVER.get(tier - 1).asStack(2))
@@ -403,7 +403,29 @@ public class GTMTRecipe {
                     .save(provider);
         }
 
-        for (int tier : GTValues.tiersBetween(GTValues.IV, GTCEuAPI.isHighTier() ? GTValues.OpV : GTValues.UHV)) {
+        for (int tier : GTValues.tiersBetween(GTValues.EV, GTValues.MAX)) {
+            ASSEMBLER_RECIPES.recipeBuilder(GTMThings.id("wireless_energy_input_hatch_" + GTValues.VN[tier].toLowerCase() + "_64a"))
+                    .inputItems(GTMachines.SUBSTATION_ENERGY_INPUT_HATCH[tier].asStack())
+                    .inputItems(WIRELESS_ENERGY_RECEIVE_COVER_4A.get(tier - 1).asStack(4))
+                    .inputItems(GTItems.COVER_ENERGY_DETECTOR_ADVANCED.asStack(1))
+                    .inputFluids(GTMaterials.SolderingAlloy.getFluid(144))
+                    .outputItems(WirelessMachines.WIRELESS_ENERGY_INPUT_HATCH_64A[tier].asStack())
+                    .duration(200)
+                    .EUt(GTValues.VA[tier])
+                    .save(provider);
+
+            ASSEMBLER_RECIPES.recipeBuilder(GTMThings.id("wireless_energy_output_hatch_" + GTValues.VN[tier].toLowerCase() + "_64a"))
+                    .inputItems(GTMachines.SUBSTATION_ENERGY_OUTPUT_HATCH[tier].asStack())
+                    .inputItems(WIRELESS_ENERGY_RECEIVE_COVER_4A.get(tier - 1).asStack(4))
+                    .inputItems(GTItems.COVER_ENERGY_DETECTOR_ADVANCED.asStack(1))
+                    .inputFluids(GTMaterials.SolderingAlloy.getFluid(144))
+                    .outputItems(WirelessMachines.WIRELESS_ENERGY_OUTPUT_HATCH_64A[tier].asStack())
+                    .duration(200)
+                    .EUt(GTValues.VA[tier])
+                    .save(provider);
+        }
+
+        for (int tier : GTValues.tiersBetween(GTValues.IV, GTCEuAPI.isHighTier() ? GTValues.MAX : GTValues.UHV)) {
             ASSEMBLER_RECIPES.recipeBuilder(GTMThings.id("wireless_energy_input_hatch_" + GTValues.VN[tier].toLowerCase() + "_256a"))
                     .inputItems(GTMachines.LASER_INPUT_HATCH_256[tier].asStack())
                     .inputItems(WIRELESS_ENERGY_RECEIVE_COVER_4A.get(tier - 1).asStack(4))

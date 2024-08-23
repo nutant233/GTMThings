@@ -95,6 +95,9 @@ public class CustomItems {
     public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_OPV = GTCEuAPI.isHighTier() ?
             registerTieredCover("wireless_energy_receive_cover","Wireless Energy Receive Cover",OpV,1):
             null;
+    public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_MAX = GTCEuAPI.isHighTier() ?
+            registerTieredCover("wireless_energy_receive_cover","Wireless Energy Receive Cover",MAX,1):
+            null;
 
     public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_LV_4A =
             registerTieredCover("wireless_energy_receive_cover","Wireless Energy Receive Cover",LV,4);
@@ -125,6 +128,9 @@ public class CustomItems {
             null;
     public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_OPV_4A = GTCEuAPI.isHighTier() ?
             registerTieredCover("wireless_energy_receive_cover","Wireless Energy Receive Cover",OpV,4):
+            null;
+    public static ItemEntry<ComponentItem> WIRELESS_ENERGY_RECEIVE_COVER_MAX_4A = GTCEuAPI.isHighTier() ?
+            registerTieredCover("wireless_energy_receive_cover","Wireless Energy Receive Cover",MAX,4):
             null;
 
     private static ItemEntry<ComponentItem> registerTieredCover(String name, String lang,int tier,int amperage) {

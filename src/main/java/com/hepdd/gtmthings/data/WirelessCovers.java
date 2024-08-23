@@ -23,7 +23,7 @@ public class WirelessCovers {
         GTMTHINGS_REGISTRATE.creativeModeTab(() -> CreativeModeTabs.WIRELESS_TAB);
     }
     public static final int[] ALL_TIERS = GTValues.tiersBetween(GTValues.LV,
-            GTCEuAPI.isHighTier() ? GTValues.OpV : GTValues.UV);
+            GTCEuAPI.isHighTier() ? GTValues.MAX : GTValues.UV);
 
     public final static CoverDefinition[] WIRELESS_ENERGY_RECEIVE = registerTieredWirelessCover(
             "wireless_energy_receive",1, ALL_TIERS);
